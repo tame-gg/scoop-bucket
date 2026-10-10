@@ -1,0 +1,52 @@
+{
+    "version": "0.1.0-beta.6",
+    "description": "Use multiple Tailscale and Headscale tailnets at once (desktop app, CLI, daemon)",
+    "homepage": "https://github.com/tame-gg/Flavor",
+    "license": "MIT",
+    "notes": [
+        "Start the daemon with 'flavord', then open Flavor from the Start menu.",
+        "Scoop does not start flavord at sign-in. Stop it with 'Stop-Process -Name flavord' before 'scoop update' or 'scoop uninstall'."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/tame-gg/Flavor/releases/download/v0.1.0-beta.6/flavor-0.1.0-beta.6-windows-amd64.zip",
+            "hash": "a860807907bd19f0f1895b6bd66ff18c5c27f8c34de74a7d3236918c89b2fddb",
+            "extract_dir": "flavor-0.1.0-beta.6-windows-amd64"
+        },
+        "arm64": {
+            "url": "https://github.com/tame-gg/Flavor/releases/download/v0.1.0-beta.6/flavor-0.1.0-beta.6-windows-arm64.zip",
+            "hash": "46f46a9034be7c4b2813759ce81286618cb54b6b6a72fae946354f239ce1edab",
+            "extract_dir": "flavor-0.1.0-beta.6-windows-arm64"
+        }
+    },
+    "bin": [
+        "bin\\flavord.exe",
+        "bin\\flavorctl.exe"
+    ],
+    "shortcuts": [
+        [
+            "Flavor.exe",
+            "Flavor"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/tame-gg/Flavor/releases",
+        "jsonpath": "$[0].tag_name",
+        "regex": "v([\\w.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/tame-gg/Flavor/releases/download/v$version/flavor-$version-windows-amd64.zip",
+                "extract_dir": "flavor-$version-windows-amd64"
+            },
+            "arm64": {
+                "url": "https://github.com/tame-gg/Flavor/releases/download/v$version/flavor-$version-windows-arm64.zip",
+                "extract_dir": "flavor-$version-windows-arm64"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
+        }
+    }
+}
